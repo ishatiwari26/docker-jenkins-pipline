@@ -29,12 +29,12 @@ node {
     
      stage('kubectl deploy'){
         sh 'minikube start'
-        sh 'kubectl delete deployment docker-jenkins-pipline'
-        sh 'kubectl delete svc docker-jenkins-pipline'
-        sh 'kubectl run docker-jenkins-pipline --image=kartikjalgaonkar/docker-jenkins-pipline --port=8082'
+        //sh 'kubectl delete deployment docker-jenkins-pipline'
+        //sh 'kubectl delete svc docker-jenkins-pipline'
+        sh 'kubectl run docker-jenkins-pipline --image=kartikjalgaonkar/docker-jenkins-pipline --port=8982'
         sleep 60
         sh 'kubectl get pods'
-        sh 'kubectl expose deployment docker-jenkins-pipline --type=NodePort --port=8083 --target-port=8082'
+        sh 'kubectl expose deployment docker-jenkins-pipline --type=NodePort --port=8083 --target-port=8982'
         sh 'kubectl get svc'
         sh 'minikube service docker-jenkins-pipline'
     }
